@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project AB</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>	
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    	<a class="navbar-brand" href="/project-ab">Project AB</a>
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  			<ul class="navbar-nav mr-auto">
+	  			<li class="nav-item active">
+	  				<a class="nav-link" href="/project-ab">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+		        	<a class="nav-link" href="createJourney">Create Journey</a>
+		      	</li>
+	    	</ul>
+    	</div>
+	</nav>
+	<div class="container-fluid">
+		<form action="#" th:action="@{/project-ab/createJourney}" th:object="${journey}" method="post">
+			<div class="form-group row centre">
+				<label for="travellerName" class="col-sm-2 col-form-label">Journey Details</label>
+    		</div>
+    		<div class="form-group row">
+				<!-- Traveller Name -->
+				<label for="travellerName" class="col-sm-2 col-form-label">Traveller Name</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" th:field="*{travellerName}" >
+	    		</div>
+    		</div>
+    		<div class="form-group row">
+	    		<!-- Source -->
+		    	<label for="fromDest" class="col-sm-2 col-form-label">From</label>
+			    <div class="col-sm-3">
+			      	<input type="text" class="form-control" th:field="*{source}">
+			    </div>
+    		</div>
+    		<div class="form-group row">
+	    		<!-- Start Date -->
+	    		<label for="fromDate" class="col-sm-2 col-form-label">Start Date</label>
+		        <div class="col-sm-3">
+		            <div class="form-group">
+		                <div class="input-group date" id="startdatetimepicker" data-target-input="nearest">
+		                    <input type="text" class="form-control datetimepicker-input" data-target="#startdatetimepicker" th:field="*{fromDate}" />
+		                    <div class="input-group-append" data-target="#startdatetimepicker" data-toggle="datetimepicker">
+		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <script type="text/javascript">
+		            $(function () {
+		                $('#startdatetimepicker').datetimepicker();
+		            });
+		        </script>
+	        </div>
+    		<div class="form-group row">
+	    		<!-- Destination -->
+			    <label for="fromDest" class="col-sm-2 col-form-label">To</label>
+			    <div class="col-sm-3">
+			      	<input type="text" class="form-control" th:field="*{destination}" />
+			    </div>
+		    </div>
+	        <div class="form-group row">
+			    <!-- End Date -->
+			    <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
+		        <div class="col-sm-3">
+		            <div class="form-group">
+		                <div class="input-group date" id="enddatetimepicker" data-target-input="nearest">
+		                    <input type="text" class="form-control datetimepicker-input" data-target="#enddatetimepicker" th:field="*{toDate}" />
+		                    <div class="input-group-append" data-target="#enddatetimepicker" data-toggle="datetimepicker">
+		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <script type="text/javascript">
+		            $(function () {
+		                $('#enddatetimepicker').datetimepicker();
+		            });
+		        </script>
+    		</div>
+  			<button class="btn btn-primary" type="submit">Save Journey</button>
+		</form>
+	</div>
+
+</body>
+</html>
