@@ -29,6 +29,34 @@
 	    	</ul>
     	</div>
 	</nav>
-
+    
+    <div class="container-fluid">
+		<form action="#" th:action="@{/project-ab/register}" th:object="${user}" method="post">
+			<div class="form-group row"></div>
+    		<div class="form-group row">
+				<!-- Traveller Name -->
+				<label for="username" class="col-sm-2 col-form-label">Username : </label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" th:field="*{username}" >
+	    		</div>
+    		</div>
+    		<div class="form-group row">
+	    		<!-- Source -->
+		    	<label for="password" class="col-sm-2 col-form-label">Password : </label>
+			    <div class="col-sm-3">
+			      	<input type="password" class="form-control" th:field="*{password}">
+			    </div>
+    		</div>
+    		<div class="form-group row">
+	    		<!-- Source -->
+		    	<label for="email" class="col-sm-2 col-form-label">Email : </label>
+			    <div class="col-sm-3">
+			      	<input type="text" class="form-control" th:field="*{email}">
+			    </div>
+    		</div>
+  			<button class="btn btn-primary" type="submit">Register</button>
+		</form>
+	</div>
+	
 </body>
 </html>
