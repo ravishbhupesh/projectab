@@ -4,31 +4,11 @@
     <title>Project AB</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <link rel="stylesheet" type="text/css" href="/webjars/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/momentjs/min/moment.min.js"></script>
-    <script type="text/javascript" src="/webjars/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    
+    <div th:replace="fragments :: headerab" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    	<a class="navbar-brand" href="/project-ab">Project AB</a>
-  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  			<ul class="navbar-nav mr-auto">
-	  			<li class="nav-item active">
-	  				<a class="nav-link" href="/project-ab">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-		        	<a class="nav-link" href="createJourney">Create Journey</a>
-		      	</li>
-	    	</ul>
-    	</div>
-	</nav>
+    <div th:replace="fragments :: navbarab" />
 	<div class="container-fluid">
 		<form action="#" th:action="@{/project-ab/createJourney}" th:object="${journey}" method="post">
 			<div class="form-group row centre">

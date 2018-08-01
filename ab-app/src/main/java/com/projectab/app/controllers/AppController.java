@@ -32,49 +32,57 @@ public class AppController {
 
 	@GetMapping("/project-ab")
 	public String welcome() {
+		System.out.println("AppController::welcome");
 		return "base";
 	}
 
 	@GetMapping("/project-ab/journey")
 	public String showJourney(Model model) {
+		System.out.println("AppController::showJourney");
 		model.addAttribute("journey", new Journey());
 		return "createJourney";
 	}
 
 	@PostMapping("/project-ab/createJourney")
 	public String createJourney(Journey journey) {
-		System.out.println(journey);
+		System.out.println("AppController::createJourney");
 		journeyRepository.save(journey);
 		return "base";
 	}
 
 	@GetMapping("/project-ab/login")
 	public String login(Model model) {
+		System.out.println("AppController::login");
 		model.addAttribute("user", new UserDto());
 		return "login";
 	}
 
-	@PostMapping("/project-ab/login")
+	@PostMapping("/project-ab/loginAuthenticate")
 	public ModelAndView loginAuthenticate(UserDto userDto) {
+		System.out.println("AppController::loginAuthenticate");
 		ModelAndView modelAndView = new ModelAndView("base", "user", userDto);
 		Optional<User> user = userRepository.findByUsername(userDto.getUsername());
 		if (user.isPresent() && user.get().isActive() && user.get().getPassword().equals(userDto.getPassword())) {
 			modelAndView.setViewName("base");
+			System.out.println("Valid User!");
 		} else {
 			modelAndView.setViewName("login");
 			userDto.setStatus("Invalid User!");
+			System.out.println("Invalid User!");
 		}
 		return modelAndView;
 	}
 
 	@GetMapping("/project-ab/register")
 	public String register(Model model) {
+		System.out.println("AppController::register");
 		model.addAttribute("user", new UserDto());
 		return "register";
 	}
 
 	@PostMapping("/project-ab/register")
 	public String registerUser(UserDto dto) {
+		System.out.println("AppController::registerUser");
 		System.out.println("user :" + dto);
 		User user = new User();
 		user.setUsername(dto.getUsername());
