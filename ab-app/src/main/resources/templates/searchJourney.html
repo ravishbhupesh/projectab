@@ -9,28 +9,30 @@
 <body>
     <div th:replace="fragments :: navbarab" />
 	<div class="container-fluid">
-		<form action="#" th:action="@{/project-ab/createJourney}" th:object="${journey}" method="post">
+		<form action="#" th:action="@{/project-ab/searchJourney}" th:object="${journeyDto}" method="post">
 			<div class="form-group row centre">
-				<label for="travellerName" class="col-sm-2 col-form-label">Journey Details</label>
     		</div>
     		<div class="form-group row">
-				<!-- Traveller Name -->
-				<label for="travellerName" class="col-sm-2 col-form-label">Traveller Name</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" th:field="*{travellerName}" >
-	    		</div>
+    			<div class="col-sm-2">
+			    	<label for="fromDest" class="col-sm-2 col-form-label">From</label>
+    			</div>
+    			<div class="col-sm-4">
+		    		<label for="fromDate" class="col-sm-2 col-form-label">Start Date</label>
+    			</div>
+    			<div class="col-sm-2">
+				    <label for="toDest" class="col-sm-2 col-form-label">To</label>
+    			</div>
+    			<div class="col-sm-4">
+				    <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
+    			</div>
     		</div>
     		<div class="form-group row">
 	    		<!-- Source -->
-		    	<label for="fromDest" class="col-sm-2 col-form-label">From</label>
-			    <div class="col-sm-3">
+			    <div class="col-sm-2">
 			      	<input type="text" class="form-control" th:field="*{source}">
 			    </div>
-    		</div>
-    		<div class="form-group row">
 	    		<!-- Start Date -->
-	    		<label for="fromDate" class="col-sm-2 col-form-label">Start Date</label>
-		        <div class="col-sm-3">
+		        <div class="col-sm-4">
 		            <div class="form-group">
 		                <div class="input-group date" id="startdatetimepicker" data-target-input="nearest">
 		                    <input type="text" class="form-control datetimepicker-input" data-target="#startdatetimepicker" th:field="*{fromDate}" />
@@ -42,7 +44,7 @@
 		        </div>
 		        <script type="text/javascript">
 		            $(function () {
-		                $('#startdatetimepicker').datetimepicker({
+		            	$('#startdatetimepicker').datetimepicker({
 		                	format: 'YYYY-MM-DDTHH:mm:ssZ',
 		                });
 		                
@@ -51,18 +53,12 @@
 		                });
 		            });
 		        </script>
-	        </div>
-    		<div class="form-group row">
 	    		<!-- Destination -->
-			    <label for="toDest" class="col-sm-2 col-form-label">To</label>
-			    <div class="col-sm-3">
+			    <div class="col-sm-2">
 			      	<input type="text" class="form-control" th:field="*{destination}" />
 			    </div>
-		    </div>
-	        <div class="form-group row">
 			    <!-- End Date -->
-			    <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
-		        <div class="col-sm-3">
+		        <div class="col-sm-4">
 		            <div class="form-group">
 		                <div class="input-group date" id="enddatetimepicker" data-target-input="nearest">
 		                    <input type="text" class="form-control datetimepicker-input" data-target="#enddatetimepicker" th:field="*{toDate}" />
@@ -74,21 +70,50 @@
 		        </div>
 		        <script type="text/javascript">
 		            $(function () {
-		                $('#enddatetimepicker').datetimepicker({
-		                	format: 'YYYY-MM-DDTHH:mm:ssZ',
-		                    useCurrent: false,
-		                });
+		            	$(function () {
+			                $('#enddatetimepicker').datetimepicker({
+			                	format: 'YYYY-MM-DDTHH:mm:ssZ',
+			                    useCurrent: false,
+			                });
 
-		                $("#enddatetimepicker").on("change.datetimepicker", function (e) {
-		                    $('#startdatetimepicker').datetimepicker('maxDate', e.date);
-		                });
+			                $("#enddatetimepicker").on("change.datetimepicker", function (e) {
+			                    $('#startdatetimepicker').datetimepicker('maxDate', e.date);
+			                });
+			            });
 		            });
 		        </script>
     		</div>
-  			<div class="col-md-4 text-center">
-	  			<button class="btn btn-primary" type="submit">Save Journey</button>
+    		<div class="col-sm-10 text-center">
+	  			<button class="btn btn-primary" type="submit">Search</button>
     		</div>
 		</form>
+		<!-- RESULTS -->
+		
+		<div th:if="${not #lists.isEmpty(journeys)}">
+			<div class="col-sm-10 text-center">
+				<label for="endDate" class="col-sm-2 col-form-label">Journeys</label>
+			</div>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col-sm-2">Traveller</th>
+						<th scope="col-sm-2">Travelling From</th>
+			      		<th scope="col-sm-4">Starting On</th>
+			      		<th scope="col-sm-2">Travelling To</th>
+			      		<th scope="col-sm-4">Reaching On</th>
+			    	</tr>
+			  	</thead>
+			  	<tbody>
+			    	<tr  th:each="j : ${journeys}">
+			      		<td th:text="${j.travellerName}" />
+			      		<td th:text="${j.source}" />
+			      		<td th:text="${j.fromDate}" />
+					    <td th:text="${j.destination}" />
+					    <td th:text="${j.toDate}" />
+			    	</tr>
+			  	</tbody>
+			</table>
+		</div>
 	</div>
 
 </body>

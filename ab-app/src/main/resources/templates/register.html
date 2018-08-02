@@ -3,7 +3,6 @@
 <head>
     <title>Project AB</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
   	
   	<div th:replace="fragments :: headerab" />
     
@@ -35,7 +34,9 @@
 			      	<input type="text" class="form-control" th:field="*{email}">
 			    </div>
     		</div>
-  			<button class="btn btn-primary" type="submit">Register</button>
+  			<div class="col-md-4 text-center">
+	  			<button class="btn btn-primary" type="submit">Register</button>
+    		</div>
 		</form>
 	</div>
 	

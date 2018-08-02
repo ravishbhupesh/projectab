@@ -4,7 +4,6 @@
 	<title>Fragments</title>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
 	<div th:fragment="headerab">
@@ -40,7 +39,7 @@
 			      	</li>
 		    	</ul>
 		    	<span class=navbar-text>
-					Welcome <span th:text="${#authentication.getPrincipal().getUsername()}" sec:authorize="isAuthenticated()" th:remove="tag" />!		    		
+					<span th:text="'Welcome ' + ${#authentication.getPrincipal().getUsername()} + '!'" sec:authorize="isAuthenticated()" th:remove="tag" />
 		    	</span>
 	  			<ul class="navbar-nav mr-auto navbar-right">
 					<li class="nav-item">

@@ -3,7 +3,6 @@
 <head>
     <title>Project AB</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
   	
   	<div th:replace="fragments :: headerab" />
     
@@ -31,13 +30,11 @@
     		<div class="form-group row">
 	    		<span th:if="${user.status != null}" th:text="${user.status}">Error</span>
     		</div>
-  			<button class="btn btn-primary" type="submit">Login</button>
+  			<div class="col-md-4 text-center">
+	  			<button class="btn btn-primary" type="submit">Login</button>
+    		</div>
 		</form>
 	</div>
 	
-	<div class="container">
-		<a class="nav-link" href="/project-ab/register">Register</a>
-	</div>
-
 </body>
 </html>

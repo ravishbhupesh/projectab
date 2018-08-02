@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.request.RequestContextListener;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
@@ -40,10 +41,23 @@ public class Application extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/webjars/**", "/project-ab/", "/project-ab/**").permitAll().anyRequest()
 				// replaced the below line by .antMatcher(...)
 				// .anyRequest()
-				.authenticated().and().formLogin().permitAll().loginPage("/project-ab/login")
-				.loginProcessingUrl("/project-ab/loginAuthenticate").defaultSuccessUrl("/project-ab")
-				.failureUrl("/project-ab/login").and().exceptionHandling().and().csrf()
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and().logout().permitAll();
+				.authenticated()
+				.and().formLogin()
+					.permitAll()
+					.loginPage("/project-ab/login")
+					.loginProcessingUrl("/project-ab/loginAuthenticate")
+					.defaultSuccessUrl("/project-ab")
+					.failureUrl("/project-ab/login")
+				.and().exceptionHandling()
+				.and().csrf()
+					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+				.and().logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/project-ab/logout"))
+					.logoutSuccessUrl("/project-ab")
+					.deleteCookies("JSESSIONID")
+					.clearAuthentication(true)
+					.invalidateHttpSession(true)
+					;
 		// below line will generate a default Spring form
 		// .and().httpBasic();
 		// .loginPage("/project-ab/login").permitAll();

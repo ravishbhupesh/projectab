@@ -1,39 +1,20 @@
 /**
  * 
  */
-package com.projectab.app.model;
-
-import java.time.OffsetDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.projectab.app.dto;
 
 /**
  * @author Bhupesh
  *
  */
-@Entity
-@Table(name="JOURNEY")
-public class Journey {
+public class JourneyDto {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="JOURNEYID")
 	private int journeyKey;
-	@Column(name="TRAVELLER")
 	private String travellerName;
-	@Column(name="SOURCE")
 	private String source;
-	@Column(name="DESTINATION")
 	private String destination;
-	@Column(name="STARTDATE")
-	private OffsetDateTime fromDate;
-	@Column(name="ENDDATE")
-	private OffsetDateTime toDate;
+	private String fromDate;
+	private String toDate;
 	
 
 	public int getJourneyKey() {
@@ -60,16 +41,16 @@ public class Journey {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public OffsetDateTime getFromDate() {
+	public String getFromDate() {
 		return fromDate;
 	}
-	public void setFromDate(OffsetDateTime fromDate) {
+	public void setFromDate(String fromDate) {
 		this.fromDate = fromDate;
 	}
-	public OffsetDateTime getToDate() {
+	public String getToDate() {
 		return toDate;
 	}
-	public void setToDate(OffsetDateTime toDate) {
+	public void setToDate(String toDate) {
 		this.toDate = toDate;
 	}
 	
