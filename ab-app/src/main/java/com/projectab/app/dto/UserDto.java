@@ -5,14 +5,28 @@ package com.projectab.app.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.projectab.app.validation.ValidPassword;
+
 /**
  * @author Bhupesh
  *
  */
 public class UserDto {
 
+	@NotNull
+	@Size(min=3,max=30, message="Size should be between 3 and 30")
 	private String username;
+	@NotNull
+	@ValidPassword
 	private String password;
+	@ValidPassword
+	private String matchingPassword;
+	@NotNull
+	@Email
 	private String email;
 	private String name;
 	private Date dateRegistered;
@@ -64,6 +78,14 @@ public class UserDto {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getMatchingPassword() {
+		return matchingPassword;
+	}
+
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
 	}
 
 }

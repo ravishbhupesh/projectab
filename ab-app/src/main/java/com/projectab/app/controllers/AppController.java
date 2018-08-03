@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -138,9 +142,16 @@ public class AppController {
 	}
 
 	@PostMapping("/project-ab/register")
-	public String registerUser(UserDto dto) {
+	public String registerUser(@Valid @ModelAttribute("user") UserDto dto, BindingResult bindingResult) {
 		System.out.println("AppController::registerUser");
 		System.out.println("user :" + dto);
+		if(bindingResult.hasErrors()) {
+			return "register";
+		}
+		if(!dto.getPassword().equals(dto.getMatchingPassword())) {
+			bindingResult.rejectValue("matchingPassword", "error.password.mismatch");
+			return "register";
+		}
 		User user = new User();
 		user.setUsername(dto.getUsername());
 		user.setPassword(dto.getPassword());
