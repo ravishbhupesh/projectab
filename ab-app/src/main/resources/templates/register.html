@@ -5,14 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   	
   	<div th:replace="fragments :: headerab" />
-    
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
     <div th:replace="fragments :: navbarab" />
     
     <div class="container-fluid">
-		<form action="#" th:action="@{/project-ab/register}" th:object="${user}" method="post">
-			<div class="form-group row"></div>
+		<form id="signup-form" action="#" th:action="@{/project-ab/register}" th:object="${user}" method="post">
+			<div class="form-group row">
+				<span th:if="${message != null}" class="col-sm-4 error-message" th:text="${message}" />
+			</div>
     		<div class="form-group row">
 				<!-- Traveller Name -->
 				<label for="username" class="col-sm-2 col-form-label">Username : </label>
@@ -45,6 +47,11 @@
 		      	<input type="text" class="col-sm-3 form-control" th:field="*{email}">
 			    <span class="col-sm-4 error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}" />
     		</div>
+    		
+    		<div class="form-group row">
+    			<div class="col-sm-4 g-recaptcha" data-sitekey="6LdVGmgUAAAAAM6Il9dQb94g34SQvRIuK9D6q6GX" />
+    		</div>
+    		
   			<div class="col-md-4 text-center">
 	  			<button class="btn btn-primary" type="submit">Register</button>
     		</div>
