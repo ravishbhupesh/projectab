@@ -34,7 +34,8 @@ public class Journey {
 	private OffsetDateTime fromDate;
 	@Column(name="ENDDATE")
 	private OffsetDateTime toDate;
-	
+	@Column(name="OWNEDBY")
+	private long userId;
 
 	public int getJourneyKey() {
 		return journeyKey;
@@ -73,6 +74,12 @@ public class Journey {
 		this.toDate = toDate;
 	}
 	
+	public long getUserId() {
+		return userId;
+	}
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Traveller Name : " + getTravellerName() + "\n");

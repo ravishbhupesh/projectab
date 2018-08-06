@@ -3,6 +3,9 @@
  */
 package com.projectab.app.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * @author Bhupesh
  *
@@ -11,10 +14,19 @@ public class JourneyDto {
 	
 	private int journeyKey;
 	private String travellerName;
+	@NotNull
+	@Size(min=1, message="Please enter a valid value!")
 	private String source;
+	@NotNull
+	@Size(min=1, message="Please enter a valid value!")
 	private String destination;
+	@NotNull
+	@Size(min=1, message="Please enter a valid value!")
 	private String fromDate;
+	@NotNull
+	@Size(min=1, message="Please enter a valid value!")
 	private String toDate;
+	private String contact;
 	
 
 	public int getJourneyKey() {
@@ -54,6 +66,12 @@ public class JourneyDto {
 		this.toDate = toDate;
 	}
 	
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Traveller Name : " + getTravellerName() + "\n");

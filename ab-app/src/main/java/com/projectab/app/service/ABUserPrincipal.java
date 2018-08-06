@@ -22,6 +22,10 @@ public class ABUserPrincipal implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;
 	}
+	
+	public long getUserId() {
+		return user.getUserId();
+	}
 
 	@Override
 	public String getPassword() {
