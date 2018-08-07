@@ -87,6 +87,8 @@ public class RegistrationController {
 		user.setActive(true);
 		user.setPlatform("AB");
 		user.setRegisteredDate(new Date().toString());
+		user.setFirstname(dto.getFirstname());
+		user.setLastname(dto.getLastname());
 
 		userRepository.save(user);
 		// return "base";

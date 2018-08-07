@@ -34,6 +34,12 @@ public class User {
 	private String registeredDate;
 	@Column(name = "ISACTIVE")
 	private boolean isActive;
+	@Column(name = "FIRSTNAME")
+	private String firstname;
+	@Column(name = "LASTNAME")
+	private String lastname;
+	@Column(name = "CONTACTNUMBER")
+	private String contactNumber;
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -97,6 +103,30 @@ public class User {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 }

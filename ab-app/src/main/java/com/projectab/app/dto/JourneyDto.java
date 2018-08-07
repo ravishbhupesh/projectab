@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 public class JourneyDto {
 	
 	private int journeyKey;
+	@NotNull
+	@Size(min=3, message="Value should be minimum 3 characters!")
 	private String travellerName;
 	@NotNull
 	@Size(min=1, message="Please enter a valid value!")

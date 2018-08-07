@@ -1,35 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Project AB</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
     <div th:replace="fragments :: headerab" />
 </head>
 <body>
     <div th:replace="fragments :: navbarab" />
-	<div class="container-fluid">
+	<div class="container">
 		<form action="#" th:action="@{/project-ab/createJourney}" th:object="${journey}" method="post">
-			<div class="form-group row centre">
-				<label for="travellerName" class="col-sm-2 col-form-label">Journey Details</label>
+			<div class="form-group row center">
     		</div>
     		<div class="form-group row">
 				<!-- Traveller Name -->
-				<label for="travellerName" class="col-sm-2 col-form-label">Traveller Name</label>
+				<span for="travellerName" class="col-sm-3 col-form-label" th:text="#{label.journey.travellername}"/>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" th:field="*{travellerName}" >
+					<input type="text" class="form-control" th:field="*{travellerName}" maxlength="50" />
 	    		</div>
+	    		<span class="col-sm-4 error-message" th:each="error: ${#fields.errors('travellerName')}" th:text="${error}" />
     		</div>
     		<div class="form-group row">
 	    		<!-- Source -->
-		    	<label for="fromDest" class="col-sm-2 col-form-label">From</label>
+		    	<span for="from" class="col-sm-3 col-form-label" th:text="#{label.journey.from}" />
 			    <div class="col-sm-3">
-			    	<!-- 
-				      	<input type="text" class="form-control" th:field="*{source}">
-			    	 -->
 			    	 <input type="text" class="form-control" th:field="*{source}" id="source" />
-			    	 <span class="col-sm-3 error-message" th:each="error: ${#fields.errors('source')}" th:text="${error}" />
 			    </div>
+		    	 <span class="col-sm-4 error-message" th:each="error: ${#fields.errors('source')}" th:text="${error}" />
     		</div>
     		<script>
     			$(document).ready(function(){
@@ -49,7 +43,7 @@
     		</script>
     		<div class="form-group row">
 	    		<!-- Start Date -->
-	    		<label for="fromDate" class="col-sm-2 col-form-label">Start Date</label>
+	    		<span for="fromDate" class="col-sm-3 col-form-label" th:text="#{label.journey.fromDate}" />
 		        <div class="col-sm-3">
 		            <div class="form-group">
 		                <div class="input-group date" id="startdatetimepicker" data-target-input="nearest">
@@ -71,15 +65,15 @@
 		                });
 		            });
 		        </script>
-		        <span class="col-sm-3 error-message" th:each="error: ${#fields.errors('fromDate')}" th:text="${error}" />
+		        <span class="col-sm-4 error-message" th:each="error: ${#fields.errors('fromDate')}" th:text="${error}" />
 	        </div>
     		<div class="form-group row">
 	    		<!-- Destination -->
-			    <label for="toDest" class="col-sm-2 col-form-label">To</label>
+			    <span for="destination" class="col-sm-3 col-form-label" th:text="#{label.journey.destination}" />
 			    <div class="col-sm-3">
 			      	<input type="text" class="form-control" th:field="*{destination}" />
 			    </div>
-			    <span class="col-sm-3 error-message" th:each="error: ${#fields.errors('destination')}" th:text="${error}" />
+			    <span class="col-sm-4 error-message" th:each="error: ${#fields.errors('destination')}" th:text="${error}" />
 		    </div>
     		<script>
     			$(document).ready(function(){
@@ -99,7 +93,7 @@
     		</script>
 	        <div class="form-group row">
 			    <!-- End Date -->
-			    <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
+			    <span for="toDate" class="col-sm-3 col-form-label" th:text="#{label.journey.toDate}" />
 		        <div class="col-sm-3">
 		            <div class="form-group">
 		                <div class="input-group date" id="enddatetimepicker" data-target-input="nearest">
@@ -122,7 +116,7 @@
 		                });
 		            });
 		        </script>
-		        <span class="col-sm-3 error-message" th:each="error: ${#fields.errors('toDate')}" th:text="${error}" />
+		        <span class="col-sm-4 error-message" th:each="error: ${#fields.errors('toDate')}" th:text="${error}" />
     		</div>
   			<div class="col-md-4 text-center">
 	  			<button class="btn btn-primary" type="submit">Save Journey</button>

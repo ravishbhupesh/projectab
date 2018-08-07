@@ -2,11 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Fragments</title>
-	
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<div th:fragment="headerab">
+		<title>Project AB</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
 	    <link rel="stylesheet" type="text/css" href="/webjars/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"/>
 	    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
 	    
@@ -26,12 +28,6 @@
 		  			<li class="nav-item active">
 		  				<a class="nav-link" href="/project-ab">Home <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-			        	<a class="nav-link" href="/project-ab/login" sec:authorize="!isAuthenticated()">Login</a>
-			      	</li>
-					<li class="nav-item">
-			        	<a class="nav-link" href="/project-ab/register" sec:authorize="!isAuthenticated()">Register</a>
-			      	</li>
 			      	<li class="nav-item">
 			        	<a class="nav-link" href="/project-ab/journey" sec:authorize="isAuthenticated()">Create Journey</a>
 			      	</li>
@@ -42,7 +38,13 @@
 		    	<span class=navbar-text>
 					<span th:text="'Welcome ' + ${#authentication.getPrincipal().getUsername()} + '!'" sec:authorize="isAuthenticated()" th:remove="tag" />
 		    	</span>
-	  			<ul class="navbar-nav mr-auto navbar-right">
+	  			<ul class="navbar-nav navbar-right">
+	  				<li class="nav-item">
+			        	<a class="nav-link" href="/project-ab/login" sec:authorize="!isAuthenticated()">Login</a>
+			      	</li>
+					<li class="nav-item">
+			        	<a class="nav-link" href="/project-ab/register" sec:authorize="!isAuthenticated()">Register</a>
+			      	</li>
 					<li class="nav-item">
 			        	<a class="nav-link" href="/project-ab/logout" sec:authorize="isAuthenticated()">Logout</a>
 			      	</li>

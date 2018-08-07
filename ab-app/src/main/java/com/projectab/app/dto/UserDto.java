@@ -5,10 +5,10 @@ package com.projectab.app.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.projectab.app.validation.ValidEmail;
 import com.projectab.app.validation.ValidPassword;
 
 /**
@@ -26,11 +26,18 @@ public class UserDto {
 	@ValidPassword
 	private String matchingPassword;
 	@NotNull
-	@Email
+	@ValidEmail
 	private String email;
 	private String name;
 	private Date dateRegistered;
 	private String status;
+	@NotNull
+	@Size(min=3)
+	private String firstname;
+	@NotNull
+	@Size(min=3)
+	private String lastname;
+	private String contactNumber;
 
 	public String getUsername() {
 		return username;
@@ -86,6 +93,30 @@ public class UserDto {
 
 	public void setMatchingPassword(String matchingPassword) {
 		this.matchingPassword = matchingPassword;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 }

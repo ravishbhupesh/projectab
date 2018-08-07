@@ -1,9 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Project AB</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
     <div th:replace="fragments :: headerab" />
 </head>
 <body>
@@ -14,22 +11,22 @@
     		</div>
     		<div class="form-group row">
     			<div class="col-sm-2">
-			    	<label for="fromDest" class="col-sm-2 col-form-label">From</label>
+			    	<span for="from" class="col-sm-2 col-form-label" th:text="#{label.journey.from}" />
     			</div>
     			<div class="col-sm-4">
-		    		<label for="fromDate" class="col-sm-4 col-form-label">Start Date</label>
+		    		<span for="fromDate" class="col-sm-2 col-form-label" th:text="#{label.journey.fromDate}" />
     			</div>
     			<div class="col-sm-2">
-				    <label for="toDest" class="col-sm-2 col-form-label">To</label>
+				    <span for="destination" class="col-sm-2 col-form-label" th:text="#{label.journey.destination}" />
     			</div>
     			<div class="col-sm-4">
-				    <label for="endDate" class="col-sm-4 col-form-label">End Date</label>
+				    <span for="toDate" class="col-sm-2 col-form-label" th:text="#{label.journey.toDate}" />
     			</div>
     		</div>
     		<div class="form-group row">
 	    		<!-- Source -->
 			    <div class="col-sm-2">
-			      	<input type="text" class="form-control" th:field="*{source}">
+			      	<input type="text" read class="form-control" th:field="*{source}">
 			    </div>
 	    		<script>
 	    			$(document).ready(function(){
@@ -146,12 +143,25 @@
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col-sm-2">Traveller</th>
-						<th scope="col-sm-2">Travelling From</th>
-			      		<th scope="col-sm-2">Starting On</th>
-			      		<th scope="col-sm-2">Travelling To</th>
-			      		<th scope="col-sm-2">Reaching On</th>
-			      		<th scope="col-sm-2">Contact Person</th>
+				    
+						<th scope="col-sm-2">
+							<span for="travellername" class="col-sm-2 col-form-label" th:text="#{label.journey.travellername}" />
+						</th>
+						<th scope="col-sm-2">
+					    	<span for="from" class="col-sm-2 col-form-label" th:text="#{label.journey.from}" />
+				    	</th>
+			      		<th scope="col-sm-2">
+				    		<span for="fromDate" class="col-sm-2 col-form-label" th:text="#{label.journey.fromDate}" />
+			    		</th>
+			      		<th scope="col-sm-2">
+						    <span for="destination" class="col-sm-2 col-form-label" th:text="#{label.journey.destination}" />
+					    </th>
+			      		<th scope="col-sm-2">
+						    <span for="toDate" class="col-sm-2 col-form-label" th:text="#{label.journey.toDate}" />
+					    </th>
+			      		<th scope="col-sm-2">
+			      			<span for="contactperson" class="col-sm-2 col-form-label" th:text="#{label.journey.contactperson}" />
+						</th>
 			    	</tr>
 			  	</thead>
 			  	<tbody>
